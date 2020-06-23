@@ -1,0 +1,548 @@
+<!-- Teste - Live Camarote (dois dias)
+
+O teste tem como objetivo acurar as habilidades do candidato em resolver alguns problemas relacionados à lógica de programação, regra de negócio e orientação à objetos.
+
+O mesmo consiste em um 
+
+cadastro de artista/produtor de conteúdos com os seguintes dados: (Formulários/Upload de foto/Banco de Dados)
+
+1>CPF ou CNPJ
+2>Nome
+3>Apelido do artista
+4>Cidade
+5>Estado
+6>Gênero (Rock, POP, Sertanejo, Funk, Clássico)
+7>Foto avatar (200x250)
+8>Requisitos de negócio
+
+
+O usuário deverá ter a possibilidade de cadastrar, editar, e excluir artistas. (Edição do Banco de Dados)
+
+O sistema deverá validar CPF e CNPJ digitados incorretamente. (Validação/Regex)
+
+Um artista poderá ter + de um gênero vinculado. (Multiplas Escolhas)
+
+Só serão permitidas fotos no tamanho 200x250 e nos formatos jpeg, jpg ou png, qualquer violação dessa regra deverá ser disparada uma excessão para o usuário. (Restrições de Arquivos)
+
+As fotos poderão ser armazenadas em espaço físico de disco do projeto.
+
+
+
+Requisitos técnicos
+
+O front-end poderá ser escrito em HTML5 ou utilizando algum framework como o ReactJS.
+
+[Em progresso] Os dados inputados pelo usuário deverão ser salvos em um banco de dados MySql usando o NodeJS como layer de back-end.
+
+Não envie a solução como anexo, suba os fontes para seu Github (ou outro repositório) e envie o link para guilherme@insideplaces.com.br e willian@insideplaces.com.br.
+
+informar tempo gasto de pesquisa (consulta) e de digitação, organização do código.
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="pt-br">
+<!--Responsive Contents/All Devices Compatible-->
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="description" content="Artista/Produto/Camarote">
+
+	<meta name="keywords" content="Artista, Produtor, Camarote">	
+
+
+
+	<link rel="stylesheet" type="text/css" href="jquery-3.1.1..min.js">
+  <link rel="stylesheet" type="text/css" href="jquery-slim.min.js">
+<!-- Learning more fast.exe...-->	
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="bootstrap.js">
+<!-- Learning more fast.exe...--> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+
+	<link rel="stylesheet" type="text/css" href="stylemenuvertical.css">
+	<link rel="stylesheet" type="text/css" href="stylematerialize.css">
+	<link rel="stylesheet" type="text/css" href="form-validation.css">
+	<link rel="stylesheet" type="text/css" href="stylecarousel.css">
+
+
+	<title>Live Camarote (International)</title>
+</head>
+<body>
+	<style>
+
+		body {
+			background-image: url("morroco-hotel-2018-view.jpg");
+			background-size: 120%;
+			color: white;
+			font-size: 18px;
+			font-style: italic;
+		}
+
+  #square {        
+  position          :none;        
+  top               :50px;        
+  left              :50px;        
+  width             :260px;        
+  height            :50px;        
+  padding           :2px;        
+  text-align        :center;        
+  border-width      :16px;        
+  border-style      :solid;        
+  background        :lightblue;
+  box-shadow: 10px 20px 10px 10px rgba(0,0,0,0.06);          
+
+  color: gold;
+  border-left: 20px;
+  border-right: 20px;
+  border-top: 21px;
+  border-bottom: 22px;        
+
+  transition        :all .6s ease-in-out;     
+  -moz-transition   :all .6s ease-in-out;     
+  -webkit-transition:all .6s ease-in-out;     
+  -o-transition     :all .6s ease-in-out;     
+  -ms-transition    :all .6s ease-in-out;      
+  
+  }      
+  #square:hover {        
+  background: purple;
+  font-size: 20px;
+  border-style: groove;
+  border-color: orange;
+  border-radius: 25px;
+  color: gold;
+  box-shadow: 10px 20px 0px 10px rgba(0,0,0,0.06);          
+        
+  -moz-transform    :rotate(375deg);        
+  -webkit-transform :rotate(375deg);        
+  -o-transform      :rotate(375deg);        
+  -ms-transform     :rotate(375deg);        
+  transform         :rotate(375deg);      
+  }    
+
+ footer-1 {
+  font-size: 30px; 
+  text-shadow: 15px 18px 16px 1px rgba(0,0,0, 0.60);"
+  box-shadow: 15px 8px 6px 12px rgba(0,0,0, 0.60); "
+  }
+  .collapsible {
+    background-color: #eee;
+    color:#444;
+    cursor:pointer;
+    padding:18px;
+    width: 100%;
+    border:none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+
+  .content{
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    transition: max-height 0.2s ease-out;
+  }
+  .collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign(+)*/
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+
+  }
+  .active:after {
+    content:"\2796"; /*Unicode character for "minus" sign (-)*/
+  }
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border:none;
+    cursor: pointer;
+  }
+  .dropdown {
+    position:relative;
+    display:inline-block;
+    cursor: pointer;
+  }
+  .dropdown-content{
+    display:none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  } 
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown:hover .dropbtn{
+    background-color: #3e8e41;
+  }
+
+  </style>
+	<script>
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0;i < coll.length; i++) {
+  coll[i].addEventListener("click", function(){
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+
+
+    function Car(make, model, color, year){
+      this.make = make;
+      this.model = model;
+      this.color = color;
+      this.year = year;
+
+      this.setMiles = function(miles){
+        this.miles = mile
+        return miles;
+      } 
+    }
+		
+    const car1 = new Car('Porsche', 'Lycan', 'Gold', 2017);
+    const car2 = new Car('Aston Martin', 'Sherlock', 'Silver', 2018);
+
+    Car.prototype.age = function (){
+      return (new Date()).getFullYear() - this.Year;
+    }
+
+    carl1.age(); //2
+
+	</script>
+<!---->
+<br>
+
+<h1 style="color: gold; background-color: rgb(4, 188, 215); width: 300px; box-shadow: 35px 18px 36px 10px rgba(0,0,0, 0.60); text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60);">Live Camarote (International)
+<div id="square" style="box-shadow: 35px 18px 36px 10px rgba(0,0,0, 0.60);">
+
+  <abbr title="5" class="rating" style="text-shadow: 15px 8px 6px p1x rgba(0,0,0, 0.60);"> __&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;__ </abbr>
+</h1></div><br><hr><hr><br><br>
+
+<hr>
+<p style="color: lightgreen; background-color: rgb(4, 188, 215); width: 250px; box-shadow: 35px 18px 36px 10px rgba(0,0,0, 0.60); text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60);"> <b>Para que possamos analisar sua(s) proposta(s) solicitamos que preencha as informações abaixo incluindo a foto do seu artista/produtor e os detalhes do seu negócios, nos campos abaixo:</p><br>
+
+<h2 style="color: lightgreen; background-color: rgb(4, 188, 215); width: 900px; box-shadow: 35px 18px 36px 10px rgba(0,0,0, 0.60);text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60);">
+  Digite e Cadastre seu Artista/Produtor
+
+
+<!--
+1>CPF ou CNPJ
+2>Nome
+3>Apelido do artista
+4>Cidade
+5>Estado
+6>Gênero (Rock, POP, Sertanejo, Funk, Clássico)
+7>Foto avatar (200x250)
+8>Requisitos de negócio
+9> -->
+
+
+	 <div class="col-md-8 order-md-1" >
+          <h4 class="mb-3"><br>
+            <span class="text-muted"><i style="color: white; ">Cadastro</i></span>
+            <p></p></h4>
+          <form class="needs-validation" novalidate>
+            <div class="row" >
+              <div class="col-md-6 mb-3" >
+                <label for="firstName" style="text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60); font-size: 22px;" >Nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label style="text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60); font-size: 26px;" for="NickName">Apelido</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" style="font-size: 22px;">E-mail</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="email" placeholder="e-mail" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your emailis required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="CPF/CNPJ" style="font-size: 26px;">CPF ou CNPJ <span class="number"></span></label>
+              <input type="email" class="form-control" id="CPF/CNPJ" placeholder="Digite seu CPF ou CNPJ" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address" style="font-size: 22px;">Endereço</label><!--//*{{!Design By Eros M.Lima}}*//-->
+              <input type="text" class="form-control" id="address" placeholder="Av. Paulista, 221, 30o. andar , conjunto b, Estúdio/Produtora" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address2" style="font-size: 22px;">Requisitos do Negócio (Descreva)<span class="text-muted"> </span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Artista/Produção/Business Plans" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="Gênero Musical" style="font-size: 22px;" width= "500"; >Gênero Musical</label>
+                <select class="custom-select d-block w-100" id="country" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60); font-size: 12px;">
+                  <option value="" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">Selecione o Gênero Musical</option>
+                  <option>Rock</option>
+                  <option>Pop</option>
+                  <option>Classic</option>
+                  <option>Sertanejo</option>
+                  <option>Forró</option>
+                  <option>Samba</option>
+                  <option>Hip Hop</option>
+                  <option>Jazz</option>
+         
+
+                  <option>DJ/Eletronico</option>
+                  <option>Tecno/House</option>
+                  <option>Soundtrack</option>
+                  <option>Diversos</option>
+
+
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid Musical Gender.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state" style="font-size: 22px;">Estado/Cidade</label>
+                 <input type="text" class="form-control" id="username" placeholder="Estado/Cidade" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state/city.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="zip" style="font-size: 18px;">CEP</label>
+                <input type="text" class="form-control" id="zip" placeholder="123-45678" required style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);">
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+            </div>
+
+
+<p><input class="btn btn-success" type="file" name="Foto" restrict="jpg, png, jpeg" style="color: green, font-size: 30px; border-style: groove; border-radius: 10px; box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60); text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60);">
+
+
+<button class="btn btn-success" style="color: green, font-size: 20px; border-style: groove; border-radius: 10px; box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60); text-shadow: 15px 18px 16px 0px rgba(0,0,0, 0.60);" onsubmit="click()">Enviar</button>
+</form></div></b></p></h2></p>
+
+
+    <div class="dropdown" style="box-shadow: 20px 10px 6px 0px rgba(0,0,0, 0.60); text-shadow: 22px 17px 16px 0px rgba(0,0,0, 0.60);">
+    <button class="dropbtn">Live Camarote</button>
+    <div class="dropdown-content">
+
+    <a href="#">Artistas</a>
+    <a href="#">Produtores</a>
+    </div>
+    </div>
+
+    <div class="dropdown" style="box-shadow: 18px 18px 18px 0px rgba(0,0,0, 0.60)">
+    <button class="dropbtn">Serviços</button>
+    <div class="dropdown-content" style="box-shadow: 35px 38px 36px 0px rgba(0,0,0, 0.60)">
+
+    <a href="#">Edição</a>
+    <a href="#">Produção</a>
+    <a href="#">Criação</a>
+    <a href="#" style="box-shadow: 25px 28px 0px 10px rgba(0,0,0, 0.60)">Marketing Digital</a>
+    <a href="#">Gerenciamento</a>
+    <a href="#">Web Designer</a>
+    </div>
+    </div>
+
+    <div class="dropdown">
+    <button class="dropbtn">Clientes</button>
+    <div class="dropdown-content">
+
+    <a href="#">Luan Santana</a>
+    <a href="#">Ivete Sangalo</a>
+    <a href="#">Madona</a>
+    <a href="#">Shakira</a>
+    <a href="#">Beyonce</a>
+    <a href="#">50 Cents</a>
+    <a href="#">Enrique Iglesias</a>
+    </div>
+    </div>
+
+    <div class="dropdown" style="box-shadow: 22px 24px 26px 0px rgba(0,0,0, 0.60)">
+    <button class="dropbtn">Eventos</button>
+    <div class="dropdown-content" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60)">
+
+    <a href="#">Fashion Week</a>
+    <a href="#">Loola Palloza</a>
+    <a href="#">October Fest</a>
+    <a href="#">Rock in Rio</a>
+    <a href="#">Tomorrowland</a>
+    <a href="#">Beauty Fair</a>
+    </div>
+    </div>
+
+    <div class="dropdown">
+    <button class="dropbtn">International</button>
+    <div class="dropdown-content">
+
+    <a href="#">United States</a>
+    <a href="#">Canada</a>
+    <a href="#">Ireland</a>
+    <a href="#">Italy</a>
+    <a href="#">Spain</a>
+    <a href="#">Grecee</a>
+    <a href="#">Japan</a>
+    <a href="#">Hong Kong</a>
+    <a href="#">China</a>
+    </div>
+    </div>
+
+    <div class="dropdown">
+    <button class="dropbtn" style="box-shadow: 26px 28px 32px 0px rgba(0,0,0, 0.60)">Escritórios</button>
+    <div class="dropdown-content" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60)">
+
+    <a href="#">London</a>
+    <a href="#">New York</a>
+    <a href="#">São Paulo</a>
+    <a href="#">Montreal</a>
+    <a href="#">Milan</a>
+    <a href="#">Tokyo</a>
+    </div>
+    </div>
+
+
+    <div class="dropdown">
+    <button class="dropbtn" style="font-size: 14px; box-shadow: 32px 54px 56px 20px rgba(255,255,255, 0.60)">Patrocinadores</button>
+    <div class="dropdown-content">
+
+    <a href="#">NBC</a>
+    <a href="#">CBS</a>
+    <a href="#">Warner</a>
+    <a href="#">Virgin Records</a>
+    <a href="#">HBO</a>
+    <a href="#">TNT</a>
+    </div>
+    </div>
+
+    <div class="dropdown">
+    <button class="dropbtn" style="font-size: 16px; box-shadow: 32px 34px 36px 0px rgba(0,0,0, 0.60)";>Redes Sociais</button>
+    <div class="dropdown-content" style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60)">
+
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#" style="box-shadow: 25px 8px 16px 10px rgba(0,0,0, 0.60)">Youtube</a>
+    <a href="#">Google</a>
+    <a href="#">Instagram</a>
+    </div>
+    </div>
+
+<button class="collapsible">Live Camarote (International)</button>
+<div class="content">
+  <p>Live Camarote</p>
+  <p>Serviços</p>
+  <p>Clientes</p>
+  <p>Eventos</p>
+</div>
+
+
+		<footer id="main-footer">
+			<p align="center">
+				<h3 id="footer-1" align="center">Redes Sociais</h3></p>
+			<p align="center">
+			<a href="#"><img style="box-shadow: 5px 8px 6px 12px rgba(0,0,0, 0.60);" src="facebook.png"></a>			
+			<a href="#"><img style="box-shadow: 25px 18px 26px 21px rgba(0,0,0, 0.60);" src="twitter.png"></a>
+			<a href="#"><img style="box-shadow: 35px 38px 6px 31px rgba(0,0,0, 0.60);" src="youtube.png"></a>
+      <a href="#"><img style="box-shadow: 5px 8px 6px 12px rgba(0,0,0, 0.60);" src="instagram.png"></a><br>
+      <a href="#"><img style="text-shadow: 5px 8px 6px 12px rgba(220,220,220, 0.60);" src="google.png"></a>
+			</p>
+			<p align="center"><br>
+			<video style="box-shadow: 25px 8px 16px 0px rgba(0,0,0, 0.60);" src="All Star.mp4" poster="smarthwatch.jpg"width="810" height=""controls ></video></p><br>
+
+		
+			<p align="center" style="color: gold; font-size:24px; background-color: rgb(4, 188, 215);">Copyright © 2010-2020 Super Symmetry (Web Design)
+
+<abbr title="5" class="rating">
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</abbr>
+</p><!--//*{{!Design By Eros M.Lima}}*//-->
+		</footer>
+
+<marquee direction="right" style="border-color: green; border-radius: 10px; border-style: groove; color: gold; background-color: darkgreen;"  >Copyright Super Symmetry (Web Design by Eros M.Lima)©</marquee>
+
+
+
+<!--
+Se precisar de login
+
+<?php  
+	require_once 'login.php';  
+	$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+  
+  	if (!$db_server) die("Unable to connect to MySQL: " . mysql_error()); 
+?> 
+
+
+Acessando o Banco de Dados
+
+<?php  
+	mysql_select_db($db_database)    
+	or die("Unable to select database: " . mysql_error()); 
+?>
+
+Iniciando sessão
+
+<?php    
+
+	ini_set('session.save_path', '/home/user/sessions/');
+	    session_start(); 
+?>
+
+Finalizando a parte do back end MySQL com o PHP usando node.js.
+-->
+
+</body>
+</html>
