@@ -1,0 +1,64 @@
+public static void main (String[] args) {
+	Caixa c = new Caixa ();
+	Produto p;
+	try {
+	p = = new Produto("Celular", 600);
+	c.adicioneProduto(p);
+	catch (VendaNaoAbertaException e){
+	//trata erro aqui...
+	}
+	}
+}
+
+public static void main (String[] args) {...}
+public final int indexOf(Object e, int s) {...}
+double distanciaDaOrigem() {...}
+static double raiz(double e)
+	throws IllegalArgumentException {...}
+protected abstract String readText(File f)
+	throws FileNotFoundException,
+		UnsupportedEncondingException{...}
+
+function Retangulo(lado, altura) {
+	this.lado = lado || 0;
+	this.altura = altura || 0;
+}
+var a = new Retangulo(5, 10);
+var b = new Retangulo(1);
+b.area = b.lado* b.altura;
+
+function sum(op1, op2) {
+	return op1 + op2;
+}
+var a = sum(1, 5);
+var b = sum(3.141592, 3);
+var c = sum("foo", 5.5);
+
+var http = require('http');
+http.createServer(function (req, res)
+	res.writeHead(200, {'Content-Type'; 'text/plain'});
+	res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

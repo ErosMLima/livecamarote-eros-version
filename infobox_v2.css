@@ -1,0 +1,116 @@
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table {
+    font-size: 100%;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.infobox_v2 {
+    align-content: center;
+    background: #f1f1f1;
+    color: #000;
+    font-size: 90%;
+    line-height: 1.1em;
+    float: right;
+    clear: right;
+    margin: 0 0 .5em 1em;
+    width: 23em;
+    border: 1px solid #aaa;
+    padding: 2px;
+
+}
+table {
+    font-size: 100%;
+
+}
+table[Attributes Style] {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+
+    }
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+*.center * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div {
+    display: block;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+.mw-content-ltr {
+    direction: ltr;
+}
+div[Attributes Style] {
+    direction: ltr;
+    unicode-bidi: isolate;
+    -webkit-locale: "pt";
+}
+
+div {
+    display: block;
+}
+
+.mw-body-content {
+    position: relative;
+    line-height: 1.6;
+    font-size: 0.875em;
+    z-index: 0;
+}
+
+.mw-body, .parsoid-body {
+    padding: 1em;
+    background-color: #ffffff;
+    color: #222222;
+    direction: ltr;
+}
+
+
+.infobox_v2 th {
+    vertical-align: top;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    text-align: -internal-center;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: #0645ad;
+    background: none;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: auto;
+    text-decoration: underline;
+}
